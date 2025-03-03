@@ -1,5 +1,6 @@
 package org.yavuz.post.comment.model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

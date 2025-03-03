@@ -1,10 +1,12 @@
 package org.yavuz.post.member.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.mapping.Join;
 import org.yavuz.post.comment.model.Comment;
 import org.yavuz.post.post.model.Post;
 
@@ -27,10 +29,13 @@ public class Member {
     @Column(name = "member_lastname")
     private String memberLastName;
 
-    @OneToMany(mappedBy = "member")
+    /*@OneToMany
+    @JoinColumn(name = "post_id")
     private List<Post> postList;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany
+    @JoinColumn(name = "comment_id")
     private List<Comment> commentList;
+     */
 }
 
