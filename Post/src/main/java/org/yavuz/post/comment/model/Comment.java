@@ -20,17 +20,18 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
+
     @Column(name = "comment_date")
     private LocalDate commentDate;
+
     @Column(name = "comment_text")
     private String commentText;
-
-
-
 }

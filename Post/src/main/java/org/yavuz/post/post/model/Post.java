@@ -21,19 +21,19 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
     @Column(name = "post_text")
     private String postText;
+
     @Column(name = "post_date")
     private LocalDate postDate;
-    @OneToMany
-    @JoinColumn(name = "comment_id")
-    private List<Comment> commentList;
 
-
-
+    @OneToMany(mappedBy = "post")
+    private List<Comment> commentListonPost;
 
 }
 

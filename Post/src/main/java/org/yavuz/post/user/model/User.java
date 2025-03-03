@@ -11,7 +11,7 @@ import org.yavuz.post.post.model.Post;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "userx")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,15 +20,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "user_firstname")
     private String userFirstName;
+
     @Column(name = "user_lastname")
     private String userLastName;
-    @OneToMany
-    @JoinColumn(name = "post_id")
-    private List<Post> postList;
-    @OneToMany
-    @JoinColumn(name = "comment_id")
-    private List<Comment> commentList;
 
+    @OneToMany(mappedBy = "user")
+    private List<Post> postList;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> commentList;
 }
+
