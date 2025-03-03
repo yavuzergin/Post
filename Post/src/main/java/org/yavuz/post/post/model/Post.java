@@ -32,9 +32,11 @@ public class Post {
 
     @Column(name = "post_date")
     private LocalDate postDate;
-
+/*
     @OneToMany(mappedBy = "post")
     private List<Comment> commentListonPost;
+    
+ */
 
 }
 

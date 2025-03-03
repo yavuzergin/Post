@@ -4,6 +4,7 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.yavuz.post.comment.DTO.AddCommentRequest;
 import org.yavuz.post.comment.model.Comment;
 import org.yavuz.post.comment.service.CommentService;
 import org.yavuz.post.comment.repository.CommentRepository;
@@ -22,8 +23,8 @@ public class CommentController {
         return commentService.getComment(id);
     }
     @PostMapping("/add-comment")
-    public Comment addComment(@RequestBody Comment comment){
-        return commentService.addComment(comment);
+    public Comment addComment(@RequestBody AddCommentRequest input){
+        return commentService.addComment(input);
     }
     @PutMapping("/update-comment/{id}")
     public ResponseEntity<Comment> updateComment(@PathVariable Long id, @RequestBody Comment commentDetails){
