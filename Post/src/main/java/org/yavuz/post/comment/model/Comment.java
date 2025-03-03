@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.yavuz.post.post.model.Post;
-import org.yavuz.post.user.model.User;
+import org.yavuz.post.member.model.Member;
 
 import java.time.LocalDate;
 
@@ -22,8 +22,8 @@ public class Comment {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @ManyToOne
     @JoinColumn(name = "post_id")

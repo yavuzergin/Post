@@ -1,4 +1,4 @@
-package org.yavuz.post.user.model;
+package org.yavuz.post.member.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,26 +11,26 @@ import org.yavuz.post.post.model.Post;
 import java.util.List;
 
 @Entity
-@Table(name = "userx")
+@Table(name = "member")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_firstname")
-    private String userFirstName;
+    @Column(name = "member_firstname")
+    private String memberFirstName;
 
-    @Column(name = "user_lastname")
-    private String userLastName;
+    @Column(name = "member_lastname")
+    private String memberLastName;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "member")
     private List<Post> postList;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "member")
     private List<Comment> commentList;
 }
 
