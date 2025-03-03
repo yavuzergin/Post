@@ -2,9 +2,13 @@ package org.yavuz.post.post.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.yavuz.post.exception.ResourceNotFoundException;
+import org.yavuz.post.member.model.Member;
+import org.yavuz.post.member.repository.MemberRepository;
+import org.yavuz.post.post.DTO.AddPostRequest;
 import org.yavuz.post.post.model.Post;
 import org.yavuz.post.post.repository.PostRepository;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +16,16 @@ import java.util.Map;
 public class PostService {
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private MemberRepository memberRepository;
 
-    public Post addPost(Post post){
+    public Post addPost(AddPostRequest input){
+        Member member = memberRepository.findById(input.getMemberId())
+                .orElseThrow(()-> new ResourceNotFoundException(input.getMemberId() + "numaralı üye bulunamadı."));
+        Post post = new Post();
+        post.setMember(member);
+        post.setPostText(input.getPostText());
+        post.setPostDate(input.getPostDate());
         return postRepository.save(post);
     }
     public Map<String, Boolean> deletePost(Long id) {

@@ -12,7 +12,7 @@ import java.util.Map;
 
 @CrossOrigin("https://localhost:4200")
 @RestController
-@RequestMapping("/user-api/")
+@RequestMapping("/member-api/")
 public class MemberController {
     @Autowired
     private MemberService memberService;

@@ -3,6 +3,7 @@ package org.yavuz.post.post.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.yavuz.post.post.DTO.AddPostRequest;
 import org.yavuz.post.post.model.Post;
 import org.yavuz.post.post.service.PostService;
 import org.yavuz.post.post.repository.PostRepository;
@@ -21,8 +22,8 @@ public class PostController {
         return postService.getPost(id);
     }
     @PostMapping("/add-post")
-    public Post addPost(@RequestBody Post post){
-        return postService.addPost(post);
+    public Post addPost(@RequestBody AddPostRequest input){
+        return postService.addPost(input);
     }
     @DeleteMapping("/delete-post/{id}")
     public ResponseEntity<Map<String,Boolean>> deletePost(@PathVariable Long id){
