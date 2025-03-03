@@ -30,7 +30,7 @@ public class MemberController {
         return memberService.getMembers();
     }
 
-    @PostMapping("/update-member/{id}")
+    @PutMapping("/update-member/{id}")
     public ResponseEntity<Member> updateMember(@PathVariable Long id, @RequestBody Member memberDetails) {
         Member updatedMember = memberService.updateMember(id, memberDetails);
         return ResponseEntity.ok(updatedMember);
