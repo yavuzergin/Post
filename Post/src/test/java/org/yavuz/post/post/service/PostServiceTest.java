@@ -5,7 +5,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.yavuz.post.comment.repository.CommentRepository;
 import org.yavuz.post.member.model.Member;
 import org.yavuz.post.member.repository.MemberRepository;
 import org.yavuz.post.post.DTO.AddPostRequest;
@@ -24,13 +23,11 @@ class PostServiceTest {
     @Mock
     private PostRepository postRepository;
     @Mock
-    private CommentRepository commentRepository;
-    @Mock
     private MemberRepository memberRepository;
     @InjectMocks
     private PostService postService;
 
-    private static Member getMember() {
+    private static Member testMember() {
         Member member = new Member();
         member.setId(1L);
         member.setMemberFirstName("Hüseyin");
