@@ -31,6 +31,8 @@ class CommentServiceTest {
     @Mock
     private PostRepository postRepository;
     @InjectMocks
+    private PostService postService;
+    @InjectMocks
     private CommentService commentService;
     private static Member testMember() {
         Member member = new Member();
@@ -52,13 +54,17 @@ class CommentServiceTest {
     }
     @Test
     void addComment() {
-        Member member = new Member();
-        AddCommentRequest addCommentRequest = new AddCommentRequest();
+        Member member = testMember();
+        AddCommentRequest addCommentRequest = addCommentRequest();
+        Post post = new Post();
+        post.setId(1L);
         when(memberRepository.findById(member.getId())).thenReturn(Optional.of(member));
+        when(postRepository.findById(1L)).thenReturn(Optional.of(post));
         when(commentRepository.save(any(Comment.class))).thenReturn(new Comment());
         Comment comment = commentService.addComment(addCommentRequest);
         assertNotNull(comment);
         verify(memberRepository, times(1)).findById(member.getId());
+        verify(postRepository, times(1)).findById(post.getId());
         verify(commentRepository, times(1)).save(any(Comment.class));
     }
 
